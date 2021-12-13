@@ -11,4 +11,3 @@ minetest.register_abm({
 		minetest.sound_play("default_cool_lava",
 			{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
 	end})
-end
