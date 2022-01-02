@@ -1,11 +1,10 @@
 
-
-if nether and nether.DEPTH_CEILING and nether.DEPTH_FLOOR then
+if nether then
 	minetest.register_abm({
 		label = "Nether Water Evaporate",
 		nodenames = {"group:water", "default:water_flowing", "default:river_water_flowing"},
 		min_y = -32000,
-		max_y = -25000,
+		max_y = -24995,
 		interval = 1,
 		chance = 1,
 		catch_up = false,
