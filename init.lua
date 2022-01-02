@@ -14,6 +14,7 @@ if nether and nether.DEPTH_CEILING and nether.DEPTH_FLOOR then
 				minetest.set_node(pos, {name = "air"})
 				minetest.sound_play("default_cool_lava",
 					{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
-			end})
+			end
 		end
+	})
 end
