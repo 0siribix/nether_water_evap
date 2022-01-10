@@ -23,7 +23,7 @@ if nether then
 			for i,pos in pairs(pl) do
 				if pos.y < -24995 then
 					n = minetest.get_node(pos).name
-					if n = "default:water_flowing" or n = "default:river_water_flowing" then
+					if n == "default:water_flowing" or n == "default:river_water_flowing" then
 						minetest.set_node(pos, nl[i])
 						minetest.sound_play("default_cool_lava",
 							{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
