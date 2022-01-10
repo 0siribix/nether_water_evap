@@ -1,5 +1,4 @@
-
-if nether then
+--[[if nether then
 	minetest.register_abm({
 		label = "Nether Water Evaporate",
 		nodenames = {"group:water", "default:water_flowing", "default:river_water_flowing"},
@@ -17,3 +16,40 @@ if nether then
 --		end
 	})
 end
+]]--
+if nether then
+	minetest.register_on_liquid_transformed(function(pl, nl)
+		for i,pos in pairs(pl) do
+			if pos.y < -24995 then
+				minetest.set_node(pos, nl[i])
+				minetest.sound_play("default_cool_lava",
+					{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
+			end
+		end
+	end)
+end
+
+--[[
+local water_flowing = minetest.registered_nodes["default:water_flowing"]
+	minetest.log("Flowing water was found registered :)")
+	if water_flowing then
+		minetest.override_item("default:water_flowing", {
+			on_construct = function(pos)
+				minetest.log("Flowing water at y=" .. pos.y)
+				if pos.y <= -24995 then
+					minetest.set_node(pos, {name = "air"})
+					minetest.sound_play("default_cool_lava",
+						{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
+				end
+			end,
+			on_flood = function(pos)
+				minetest.log("Flowing water flooding at y=" .. pos.y)
+			end,
+			on_timer = function(pos)
+				minetest.log("Flowing water timer at y=" .. pos.y)
+			end
+		})
+	end
+end
+
+]]--
