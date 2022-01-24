@@ -18,11 +18,13 @@
 end
 ]]--
 if nether then
+	minetest.log("Warning", "nether.DEPTH_CEILING = " .. nether.DEPTH_CEILING)
+	minetest.log("Warning", "nether.DEPTH_FLOOR = " .. nether.DEPTH_FLOOR)
 	if minetest.register_on_liquid_transformed then
 		minetest.register_on_liquid_transformed(function(pl, nl)
 			for i,pos in pairs(pl) do
 				if pos.y < -24995 then
-					n = minetest.get_node(pos).name
+					local n = minetest.get_node(pos).name
 					if n == "default:water_flowing" or n == "default:river_water_flowing" then
 						minetest.set_node(pos, nl[i])
 						minetest.sound_play("default_cool_lava",
