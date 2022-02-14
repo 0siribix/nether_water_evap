@@ -1,8 +1,8 @@
 if nether then
-	minetest.log("Warning", "nether.DEPTH_CEILING = " .. nether.DEPTH_CEILING)
-	minetest.log("Warning", "nether.DEPTH_FLOOR = " .. nether.DEPTH_FLOOR)
+	minetest.log("warning", "nether.DEPTH_CEILING = " .. nether.DEPTH_CEILING)
+	minetest.log("warning", "nether.DEPTH_FLOOR = " .. nether.DEPTH_FLOOR)
 	if minetest.register_on_liquid_transformed then
-		minetest.log("Warning", "nether_water_evap: registering liquid transform hook")
+		minetest.log("warning", "nether_water_evap: registering liquid transform hook")
 		minetest.register_on_liquid_transformed(function(pl, nl)
 			for i,pos in pairs(pl) do
 				if pos.y < -24995 then
@@ -16,7 +16,7 @@ if nether then
 			end
 		end)
 	else
-		minetest.log("Warning", "nether_water_evap: liquid transform hook not present. Creating ABM instead")
+		minetest.log("warning", "nether_water_evap: liquid transform hook not present. Creating ABM instead")
 		minetest.register_abm({
 			label = "Nether Water Evaporate",
 			nodenames = {"group:water", "default:water_flowing", "default:river_water_flowing"},
